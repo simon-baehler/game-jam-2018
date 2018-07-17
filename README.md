@@ -48,3 +48,19 @@ Chaque héro représente un personnage célèbre de notre histoire caricaturé �
 * Vitesse de déplacement: -
 * Force : dégâts effectué par une attaque
 
+
+## Taches
+* Selection du type de joueur
+* Selection du personnage
+* Déplacement du personnage
+* Animation du personnage
+* Attaque du personnage
+* Gestion de la vie
+* Gestion des crédits
+* Deplacement du MJ
+* Interface du MJ
+* Spawn/remplacement/suppression des objets
+* PARTIE RESEAU
+* Creation d'une map
+* Gestion de IA
+
