@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - minion
   layers:
   - Default
   - TransparentFX
@@ -13,12 +14,12 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Team1-Bullet
+  - Team1-Tower
+  - Team2-Bullet
+  - Team2-Tower
+  - Team2-Minion
+  - Team1-Minion
   - 
   - 
   - 
