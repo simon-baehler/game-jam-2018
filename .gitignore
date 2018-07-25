@@ -21,3 +21,4 @@
 sysinfo.txt
 
 *.lock
+.vs/game-jam-2018/v15/Server/sqlite3/db.lock
