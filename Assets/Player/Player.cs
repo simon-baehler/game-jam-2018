@@ -117,14 +117,10 @@ public class Player : MonoBehaviour {
         {
             transform.localScale = new Vector2(Mathf.Sign(XVelocity), 1);
         }
-<<<<<<< HEAD
     }
 
     private void Death()
     {
         Death();
     }
-=======
-    }  
->>>>>>> 1009f1abcbdcf3ca6d40fa8506f31757ddbe1b6c
 }

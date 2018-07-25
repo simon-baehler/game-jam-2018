@@ -258,11 +258,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-<<<<<<< HEAD
-  m_LocalPosition: {x: -0.11, y: -2.37, z: -10}
-=======
   m_LocalPosition: {x: -1.3320696, y: -0.9975109, z: -10}
->>>>>>> 1009f1abcbdcf3ca6d40fa8506f31757ddbe1b6c
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1574685806}
@@ -9851,24 +9847,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-<<<<<<< HEAD
---- !u!1 &879927467 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1437903619043852, guid: 55b9608167d4cbf44849040f3b28a00a,
-    type: 2}
-  m_PrefabInternal: {fileID: 1867848801}
---- !u!114 &879927468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 879927467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c7ceccf274632348bd491f809646dbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-=======
 --- !u!1 &878480391
 GameObject:
   m_ObjectHideFlags: 0
@@ -9974,7 +9952,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c0b168e3699a3940aaf7ce108efeadc, type: 2}
   m_IsPrefabAsset: 0
->>>>>>> 1009f1abcbdcf3ca6d40fa8506f31757ddbe1b6c
 --- !u!1 &1574685805
 GameObject:
   m_ObjectHideFlags: 0
@@ -10014,11 +9991,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4092975217637294, guid: 55b9608167d4cbf44849040f3b28a00a, type: 2}
       propertyPath: m_LocalPosition.x
-<<<<<<< HEAD
       value: -0.11
-=======
-      value: -2.05
->>>>>>> 1009f1abcbdcf3ca6d40fa8506f31757ddbe1b6c
       objectReference: {fileID: 0}
     - target: {fileID: 4092975217637294, guid: 55b9608167d4cbf44849040f3b28a00a, type: 2}
       propertyPath: m_LocalPosition.y
@@ -10180,11 +10153,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2109089089}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-<<<<<<< HEAD
-  m_LocalPosition: {x: -0.11, y: -2.37, z: -10}
-=======
   m_LocalPosition: {x: -2.05, y: -2.56, z: -10}
->>>>>>> 1009f1abcbdcf3ca6d40fa8506f31757ddbe1b6c
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2035657196}
