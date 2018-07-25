@@ -10,9 +10,9 @@ public class Player : MonoBehaviour {
     [SerializeField] Vector2 deathKick = new Vector2(20f, 0f);
 
     // State
-    bool isAlive = true;
-    bool isBlocking = false;
     float life = 100f;
+    bool isAlive = true;
+    bool isBlocking = false;    
 
     // Cached component references
     CapsuleCollider2D m_BodyCollider;
@@ -38,7 +38,6 @@ public class Player : MonoBehaviour {
             return;
         }
 
-        Attack();
         Block();
         Run();
         Jump();
@@ -52,12 +51,16 @@ public class Player : MonoBehaviour {
         if (life <= 0)
         {
             life = 0;
-            isAlive = false;
+            Death();
         }
     }
 
     private void Attack()
     {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            myAnimator.SetTrigger("IsAttacking");
+        }
 
     }
 
@@ -66,6 +69,8 @@ public class Player : MonoBehaviour {
         if(Input.GetButtonDown("Fire2"))
         {
             isBlocking = true;
+            myAnimator.SetBool("Idle", false);
+            myAnimator.SetBool("Running", false);
             myAnimator.SetBool("Blocking", true);
         }
         else if (Input.GetButtonUp("Fire2"))
@@ -74,8 +79,6 @@ public class Player : MonoBehaviour {
             myAnimator.SetBool("Blocking", false);
             myAnimator.SetBool("Idle", true);
         }
-        
-        
     }
 
     private void Run()
@@ -114,5 +117,14 @@ public class Player : MonoBehaviour {
         {
             transform.localScale = new Vector2(Mathf.Sign(XVelocity), 1);
         }
+<<<<<<< HEAD
+    }
+
+    private void Death()
+    {
+        Death();
+    }
+=======
     }  
+>>>>>>> 1009f1abcbdcf3ca6d40fa8506f31757ddbe1b6c
 }
