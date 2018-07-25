@@ -1,10 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-
-public class towerHealth : MonoBehaviour {
+public class HealthManager : MonoBehaviour {
 
     public const float maxHealth = 100f;
     public float currentHealth = maxHealth;

@@ -25,6 +25,8 @@ TagManager:
   - Team2-Minion
   - Team1-Minion
   - Enemy
+  - Team1-Nexus
+  - Team2-Nexus
   - 
   - 
   - 
@@ -37,8 +39,11 @@ TagManager:
   - 
   - 
   - 
+<<<<<<< HEAD
+=======
   - 
   - 
+>>>>>>> master
   m_SortingLayers:
   - name: Default
     uniqueID: 0
