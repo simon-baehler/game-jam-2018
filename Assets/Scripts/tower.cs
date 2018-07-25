@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class tower : MonoBehaviour
 {
-    public bool haveAFocus = false;
     public int currentTarget;
     public GameObject targetGameObject;
     public minion minion;
+    public float bulletSpeed = 10f;
 
-    public float timeLeft = 5.0f;
-    public bool canShoot = true;
+    public float timeLeft = 2.0f;
+    private bool canShoot = true;
+    private bool haveAFocus = false;
+
 
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
@@ -22,6 +24,7 @@ public class tower : MonoBehaviour
     {
 
     }
+
     void Update()
     {
 
@@ -57,7 +60,6 @@ public class tower : MonoBehaviour
         int direction = 6;
         // Add velocity to the bullet
 
-        Debug.Log("fire");
         int Team1TowerIndex = LayerMask.NameToLayer("Team1-Tower");
         int Team1bulletIndex = LayerMask.NameToLayer("Team1-Bullet");
         int Team2TowerIndex = LayerMask.NameToLayer("Team2-Tower");
@@ -65,25 +67,31 @@ public class tower : MonoBehaviour
 
         if (this.gameObject.layer == Team1TowerIndex) {
             bullet.layer = Team1bulletIndex;
-        }else{
+        }
+        else
+        {
             bullet.layer = Team2bulletIndex;
         }
+
         Vector2 targetVect = new Vector2(targetPosition.x - this.transform.position.x  , targetPosition.y - this.transform.position.y);
         bullet.GetComponent<Rigidbody2D>().velocity = targetVect;
         Destroy(bullet, 5.0f);
+
     }
 
 
     void OnTriggerEnter2D(Collider2D col)
     {
         if (!haveAFocus) {
+
             //TODO : remplacer name par tag
-            if (col.gameObject.tag == "minion")
+            if (col.gameObject.tag == "minion" || col.gameObject.tag == "Player")
             {
                 Vector2 targetPosition = col.gameObject.transform.position;
                 currentTarget = col.gameObject.GetInstanceID();
                 haveAFocus = true;
                 targetGameObject = col.gameObject;
+
                 if (canShoot)
                 {
                     canShoot = false;
@@ -113,7 +121,8 @@ public class tower : MonoBehaviour
                 }
             }
         }
-        else {
+        else
+        {
             Vector2 targetPosition = targetGameObject.transform.position;
             currentTarget = col.gameObject.GetInstanceID();
             haveAFocus = true;

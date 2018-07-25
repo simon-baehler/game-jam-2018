@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-        Debug.Log("pop");
+    public float damage = 10f;
+
+    void Start ()
+    {
+        Debug.Log("Fired");
     }
-	
+
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "minion") {
-            Debug.Log("collison with minion");
+            Debug.Log("Hit");
+            EnemyMovement enemyScript = collision.gameObject.GetComponent<EnemyMovement>();
+            enemyScript.TakeDamage(damage);
         }
+
         Destroy(this.gameObject);
     }
 }

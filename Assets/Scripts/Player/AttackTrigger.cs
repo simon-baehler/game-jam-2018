@@ -8,9 +8,9 @@ public class AttackTrigger : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if(coll.isTrigger != true && coll.CompareTag("Enemy"))
+        if (coll.isTrigger != true && (coll.CompareTag("minion") || coll.CompareTag("Tower")))
         {
-            coll.SendMessageUpwards("TakeDamage", damage);
+            coll.BroadcastMessage("TakeDamage", damage);
         }
     }
 }

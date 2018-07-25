@@ -83,7 +83,6 @@ public class EnemyMovement : MonoBehaviour {
 
     void Fire()
     {
-        Debug.Log("Fire");
         // Create the Bullet from the Bullet Prefab
         var bullet = (GameObject)Instantiate(
             bulletPrefab,
@@ -95,5 +94,10 @@ public class EnemyMovement : MonoBehaviour {
 
         // Destroy the bullet after 2 seconds
         Destroy(bullet, 2.0f);
+    }
+
+    public void TakeDamage(float Damage)
+    {
+        Destroy(gameObject);
     }
 }

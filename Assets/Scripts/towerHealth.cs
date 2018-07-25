@@ -6,22 +6,37 @@ using UnityEngine.UI;
 
 public class towerHealth : MonoBehaviour {
 
-    public const int maxHealth = 100;
-    public int currentHealth = maxHealth;
+    public const float maxHealth = 100f;
+    public float currentHealth = maxHealth;
     public RectTransform healthBar;
+
+    private AudioSource TowerAudio;
+
+    private void Awake()
+    {
+        TowerAudio = GetComponent<AudioSource>();
+    }
+
     private void Update()
     {
         healthBar.sizeDelta = new Vector2(currentHealth, healthBar.sizeDelta.y);
     }
-    public void TakeDamage(int amount)
+
+    public void TakeDamage(float amount)
     {
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            Debug.Log("Dead!");
+            Death();
         }
 
         healthBar.sizeDelta = new Vector2(currentHealth, healthBar.sizeDelta.y);
+    }
+
+    public void Death()
+    {
+        TowerAudio.Play();
+        Destroy(gameObject, 1f);
     }
 }
