@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 100
-  healthBar: {fileID: 224013662028225628}
+  healthBar: {fileID: 0}
 --- !u!114 &114875144573530852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -252,12 +252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543ae91e284baa34b8fb99c38a44b261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  haveAFocus: 0
-  currentTarget: 0
-  targetGameObject: {fileID: 0}
-  minion: {fileID: 0}
-  timeLeft: 5
-  canShoot: 1
   bulletPrefab: {fileID: 1655326570435006, guid: 760ca72b56516b94398ae7e578caace2,
     type: 2}
   bulletSpawn: {fileID: 4770241353370662}
