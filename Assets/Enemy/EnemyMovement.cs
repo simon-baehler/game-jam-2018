@@ -8,8 +8,11 @@ public class EnemyMovement : MonoBehaviour {
 
     Rigidbody2D m_RigidBody;
     Collider2D m_Collider;
-
+    public LayerMask layerMask;
     private string status = "moving";
+    public GameObject bulletPrefab;
+    public Transform bulletSpawn;
+
 
     // Use this for initialization
     void Start () {
@@ -31,10 +34,16 @@ public class EnemyMovement : MonoBehaviour {
                 m_RigidBody.velocity = new Vector2(-moveSpeed, 0f);
             }
         }
-        else if(status == "attacking"){
-           
-        }
-	}
+
+        if (DetectedTower()) {
+            Debug.Log("Detected2");
+            m_RigidBody.velocity = new Vector2(0f, 0f);
+            Fire();
+        };
+
+
+
+    }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -46,7 +55,7 @@ public class EnemyMovement : MonoBehaviour {
         return transform.localScale.x > 0;
     }
 
-
+    /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
         int idTeam1_tower = LayerMask.NameToLayer("Team1-Tower");
@@ -60,5 +69,31 @@ public class EnemyMovement : MonoBehaviour {
             status = "attacking";
         }
 
+    }*/
+
+    bool DetectedTower()
+    {
+        return Physics2D.Raycast(transform.position, transform.right, 10 , layerMask);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x + 1000,transform.position.y,0));
+    }
+
+    void Fire()
+    {
+        Debug.Log("Fire");
+        // Create the Bullet from the Bullet Prefab
+        var bullet = (GameObject)Instantiate(
+            bulletPrefab,
+            this.gameObject.transform.position,
+            this.gameObject.transform.rotation);
+
+        // Add velocity to the bullet
+        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
+
+        // Destroy the bullet after 2 seconds
+        Destroy(bullet, 2.0f);
     }
 }
