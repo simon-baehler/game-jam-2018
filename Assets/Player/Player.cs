@@ -114,5 +114,5 @@ public class Player : MonoBehaviour {
         {
             transform.localScale = new Vector2(Mathf.Sign(XVelocity), 1);
         }
-    }
+    }  
 }

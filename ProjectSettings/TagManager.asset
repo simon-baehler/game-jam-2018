@@ -23,6 +23,7 @@ TagManager:
   - Team2-Tower
   - Team2-Minion
   - Team1-Minion
+  - Enemy
   - 
   - 
   - 
@@ -41,9 +42,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - team1-Player
+  - team2-Player
   m_SortingLayers:
   - name: Default
     uniqueID: 0
@@ -53,6 +53,9 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 390559553
+    locked: 0
+  - name: Enemy
+    uniqueID: 3999355721
     locked: 0
   - name: Player
     uniqueID: 1456793889
