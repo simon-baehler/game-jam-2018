@@ -21,7 +21,7 @@ public class bullet : MonoBehaviour {
     {
         if (collision.gameObject.tag == "minion") {
             Debug.Log("Hit");
-            EnemyMovement enemyScript = collision.gameObject.GetComponent<EnemyMovement>();
+            MinionHealthManager enemyScript = collision.gameObject.GetComponent<MinionHealthManager>();
             enemyScript.TakeDamage(damage);
         }
 
