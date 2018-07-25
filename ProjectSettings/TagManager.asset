@@ -38,6 +38,11 @@ TagManager:
   - 
   - 
   - 
+<<<<<<< HEAD
+=======
+  - 
+  - 
+>>>>>>> master
   m_SortingLayers:
   - name: Default
     uniqueID: 0
@@ -48,9 +53,9 @@ TagManager:
   - name: Ground
     uniqueID: 390559553
     locked: 0
-  - name: Enemy
-    uniqueID: 3999355721
-    locked: 0
   - name: Player
     uniqueID: 1456793889
+    locked: 0
+  - name: Enemy
+    uniqueID: 3999355721
     locked: 0
