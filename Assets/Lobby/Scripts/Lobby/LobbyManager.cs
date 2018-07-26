@@ -59,7 +59,7 @@ namespace Prototype.NetworkLobby
             _lobbyHooks = GetComponent<Prototype.NetworkLobby.LobbyHook>();
             currentPanel = mainMenuPanel;
 
-            backButton.gameObject.SetActive(false);
+            //backButton.gameObject.SetActive(false);
             GetComponent<Canvas>().enabled = true;
 
             DontDestroyOnLoad(gameObject);
@@ -210,9 +210,6 @@ namespace Prototype.NetworkLobby
         {
             conn.Send(MsgKicked, new KickMsg());
         }
-
-
-
 
         public void KickedMessageHandler(NetworkMessage netMsg)
         {
@@ -380,6 +377,7 @@ namespace Prototype.NetworkLobby
 
         public override void OnClientConnect(NetworkConnection conn)
         {
+            Debug.Log("Client");
             base.OnClientConnect(conn);
 
             infoPanel.gameObject.SetActive(false);
