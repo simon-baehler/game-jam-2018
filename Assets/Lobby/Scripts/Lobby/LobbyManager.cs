@@ -59,12 +59,6 @@ namespace Prototype.NetworkLobby
             _lobbyHooks = GetComponent<Prototype.NetworkLobby.LobbyHook>();
             currentPanel = mainMenuPanel;
 
-            /*
-<<<<<<< Updated upstream
-            //backButton.gameObject.SetActive(false);
-=======
-            /*backButton.gameObject.SetActive(false);
->>>>>>> Stashed changes */
             GetComponent<Canvas>().enabled = true;
 
             DontDestroyOnLoad(gameObject);
