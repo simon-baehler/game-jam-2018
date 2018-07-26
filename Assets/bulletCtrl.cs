@@ -21,13 +21,20 @@ public class bulletCtrl : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         HealthManager towerH = collision.GetComponent<HealthManager>();
+        HealtManagerNexus nexus = collision.GetComponent<HealtManagerNexus>();
 
         int idTeam2TowerLayer = LayerMask.NameToLayer("Team2-Tower");
+        int idTeam2Nexus = LayerMask.NameToLayer("Team2-Nexus");
 
         if (collision.gameObject.layer == idTeam2TowerLayer)
         { 
             Destroy(gameObject);
             towerH.TakeDamage(5);
+        }
+        if(collision.gameObject.layer == idTeam2Nexus)
+        {
+            Destroy(gameObject);
+            nexus.TakeDamage(5);
         }
        Debug.Log(collision.gameObject.layer);
     }

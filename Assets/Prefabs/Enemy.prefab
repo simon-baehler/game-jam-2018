@@ -245,9 +245,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
-  layerMask:
+  layerMaskTower:
     serializedVersion: 2
     m_Bits: 16384
+  layerMaskNexus:
+    serializedVersion: 2
+    m_Bits: 32768
   bulletPrefab: {fileID: 1236249245939940, guid: 0e7e605613c47d54a9bc5eea75e9df04,
     type: 2}
   firePos: {fileID: 4074097332871858}
