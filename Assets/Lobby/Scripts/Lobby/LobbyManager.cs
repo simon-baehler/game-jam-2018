@@ -63,11 +63,9 @@ namespace Prototype.NetworkLobby
             GetComponent<Canvas>().enabled = true;
 
             DontDestroyOnLoad(gameObject);
-
-            SetServerInfo("Offline", "None");
         }
 
-        public override void OnLobbyClientSceneChanged(NetworkConnection conn)
+        /*public override void OnLobbyClientSceneChanged(NetworkConnection conn)
         {
             if (SceneManager.GetSceneAt(0).name == lobbyScene)
             {
@@ -115,7 +113,7 @@ namespace Prototype.NetworkLobby
                 topPanel.isInGame = true;
                 topPanel.ToggleVisibility(false);
             }
-        }
+        }*/
 
         public void ChangeTo(RectTransform newPanel)
         {
@@ -133,12 +131,11 @@ namespace Prototype.NetworkLobby
 
             if (currentPanel != mainMenuPanel)
             {
-                backButton.gameObject.SetActive(true);
+                // backButton.gameObject.SetActive(true);
             }
             else
             {
-                backButton.gameObject.SetActive(false);
-                SetServerInfo("Offline", "None");
+                //backButton.gameObject.SetActive(false);
                 _isMatchmaking = false;
             }
         }
@@ -148,13 +145,6 @@ namespace Prototype.NetworkLobby
             var _this = this;
             infoPanel.Display("Connecting...", "Cancel", () => { _this.backDelegate(); });
         }
-
-        public void SetServerInfo(string status, string host)
-        {
-            statusInfo.text = status;
-            hostInfo.text = host;
-        }
-
 
         public delegate void BackButtonDelegate();
         public BackButtonDelegate backDelegate;
@@ -238,7 +228,6 @@ namespace Prototype.NetworkLobby
 
             ChangeTo(lobbyPanel);
             backDelegate = StopHostClbk;
-            SetServerInfo("Hosting", networkAddress);
         }
 
 		public override void OnMatchCreate(bool success, string extendedInfo, MatchInfo matchInfo)
@@ -401,7 +390,6 @@ namespace Prototype.NetworkLobby
             {//only to do on pure client (not self hosting client)
                 ChangeTo(lobbyPanel);
                 backDelegate = StopClientClbk;
-                SetServerInfo("Client", networkAddress);
             }
         }
 

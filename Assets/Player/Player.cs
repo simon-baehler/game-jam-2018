@@ -110,13 +110,12 @@ public class Player : MonoBehaviour {
 
     private void FlipSprite()
     {
-        float XVelocity = myRigidBody.velocity.x;
-        bool hasHorizontalSpeed = Mathf.Abs(XVelocity) > Mathf.Epsilon;
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-        if (hasHorizontalSpeed)
-        {
-            transform.localScale = new Vector2(Mathf.Sign(XVelocity), 1);
-        }
+
+        float diff = Mathf.Abs(mousePosition.x) - Mathf.Abs(transform.position.x);
+        transform.localScale = new Vector2(Mathf.Sign(diff), 1);
     }
 
     private void Death()
