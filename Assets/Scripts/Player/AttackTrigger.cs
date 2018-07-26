@@ -10,7 +10,7 @@ public class AttackTrigger : MonoBehaviour {
     {
         if (coll.isTrigger != true && (coll.CompareTag("minion") || coll.CompareTag("Tower")))
         {
-            coll.BroadcastMessage("TakeDamage", damage);
+            coll.gameObject.BroadcastMessage("TakeDamage", damage);
         }
     }
 }

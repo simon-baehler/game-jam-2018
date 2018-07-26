@@ -21,8 +21,6 @@ public class EnemyMovement : MonoBehaviour {
     void Start () {
         m_RigidBody = GetComponent<Rigidbody2D> ();
         m_Collider = GetComponent<Collider2D>();
-
-        rend = gameObject.GetComponent<Renderer>();
 	}
 	
 	// Update is called once per frame
@@ -46,35 +44,17 @@ public class EnemyMovement : MonoBehaviour {
             Fire();
         };
 
-
-
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    /*private void OnTriggerExit2D(Collider2D collision)
     {
         transform.localScale = new Vector2(-(Mathf.Sign(m_RigidBody.velocity.x)), 1f);
-    }
+    }*/
 
     private bool IsFacingRight()
     {
         return transform.localScale.x > 0;
     }
-
-    /*
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        int idTeam1_tower = LayerMask.NameToLayer("Team1-Tower");
-        int idTeam2_tower = LayerMask.NameToLayer("Team2-Tower");
-
-        int m_layer = this.gameObject.layer;
-
-        if (collision.gameObject.layer == idTeam1_tower || collision.gameObject.layer == idTeam2_tower) {
-            //stop moving and attack
-            m_RigidBody.velocity = new Vector2(0f, 0f);
-            status = "attacking";
-        }
-
-    }*/
 
     bool DetectedTower()
     {
@@ -88,11 +68,9 @@ public class EnemyMovement : MonoBehaviour {
 
     void Fire()
     {
-        Debug.Log("1");
         timeFire -= Time.deltaTime;
         if (timeFire <= 0)
-        {
-            Debug.Log("2");
+        {           
             Instantiate(bulletPrefab, firePos.transform.position, Quaternion.identity);
             timeFire = 1f;
         }

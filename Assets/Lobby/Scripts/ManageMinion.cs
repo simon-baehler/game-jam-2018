@@ -7,7 +7,7 @@ public class ManageMinion : MonoBehaviour {
     public GameObject Enemy;
     GameObject EnemyClone;
     public GameObject pointDepart;
-    private float timeToInsert = 3f;
+    private float timeToInsert = 1f;
 
 	// Update is called once per frame
 	void Update () {
@@ -15,8 +15,8 @@ public class ManageMinion : MonoBehaviour {
         timeToInsert -= Time.deltaTime;
         if(timeToInsert <= 0)
         {
-            EnemyClone = Instantiate(Enemy, pointDepart.transform.position, Quaternion.identity) as GameObject;
-            timeToInsert = 3f;
+            Instantiate(Enemy, pointDepart.transform.position, Quaternion.identity);
+            timeToInsert = 1f;
         }
     }
 }
