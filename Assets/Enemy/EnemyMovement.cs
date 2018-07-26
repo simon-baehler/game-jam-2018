@@ -14,11 +14,15 @@ public class EnemyMovement : MonoBehaviour {
     public Transform firePos;
     private float timeFire = 1f;
 
+    private Renderer rend;
+
 
     // Use this for initialization
     void Start () {
         m_RigidBody = GetComponent<Rigidbody2D> ();
         m_Collider = GetComponent<Collider2D>();
+
+        rend = gameObject.GetComponent<Renderer>();
 	}
 	
 	// Update is called once per frame
@@ -77,10 +81,10 @@ public class EnemyMovement : MonoBehaviour {
         return Physics2D.Raycast(transform.position, transform.right, 5 , layerMask);
     }
 
-    private void OnDrawGizmos()
+   /* private void OnDrawGizmos()
     {
         Gizmos.DrawLine(transform.position, new Vector3(transform.position.x + 1000,transform.position.y,0));
-    }
+    }*/
 
     void Fire()
     {
@@ -96,6 +100,7 @@ public class EnemyMovement : MonoBehaviour {
 
     public void TakeDamage(float Damage)
     {
+        gameObject.GetComponent<Renderer>().material.color = Color.red;
         Destroy(gameObject);
     }
 }

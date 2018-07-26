@@ -11,6 +11,10 @@ public class MinionHealthManager : MonoBehaviour {
     private void Update()
     {
         healthBar.sizeDelta = new Vector2(currentHealth, healthBar.sizeDelta.y);
+        if (currentHealth == 0)
+        {
+            Death();
+        }
     }
 
     public void TakeDamage(float amount)
