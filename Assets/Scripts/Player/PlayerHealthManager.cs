@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerHealthManager : MonoBehaviour {
 
-    public const float maxHealth = 165f;
+    public const float maxHealth = 165;
     public float currentHealth = maxHealth;
     public RectTransform healthBar;
     Rigidbody2D rigidbody2D;

@@ -23,7 +23,6 @@ public class Player : MonoBehaviour {
 
     public GameObject respawnPostion;
 
-    public PlayerHealthManager playerHealthManager;
 
 	// Use this for initialization
 	void Start () {
