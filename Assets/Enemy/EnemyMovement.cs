@@ -97,10 +97,4 @@ public class EnemyMovement : MonoBehaviour {
             timeFire = 1f;
         }
     }
-
-    public void TakeDamage(float Damage)
-    {
-        gameObject.GetComponent<Renderer>().material.color = Color.red;
-        Destroy(gameObject);
-    }
 }
