@@ -8,7 +8,8 @@ public class EnemyMovement : MonoBehaviour {
 
     Rigidbody2D m_RigidBody;
     Collider2D m_Collider;
-    public LayerMask layerMask;
+    public LayerMask layerMaskTower;
+    public LayerMask layerMaskNexus;
     private string status = "moving";
     public GameObject bulletPrefab;
     public Transform firePos;
@@ -39,7 +40,10 @@ public class EnemyMovement : MonoBehaviour {
         }
 
         if (DetectedTower()) {
-            Debug.Log("Detected2");
+            m_RigidBody.velocity = new Vector2(0f, 0f);
+            Fire();
+        };
+        if (DetectedNexus()) {
             m_RigidBody.velocity = new Vector2(0f, 0f);
             Fire();
         };
@@ -58,13 +62,17 @@ public class EnemyMovement : MonoBehaviour {
 
     bool DetectedTower()
     {
-        return Physics2D.Raycast(transform.position, transform.right, 5 , layerMask);
+        return Physics2D.Raycast(transform.position, transform.right, 5 , layerMaskTower);
+    }
+    bool DetectedNexus()
+    {
+        return Physics2D.Raycast(transform.position, transform.right, 5, layerMaskNexus);
     }
 
-   /* private void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x + 1000,transform.position.y,0));
-    }*/
+    /* private void OnDrawGizmos()
+     {
+         Gizmos.DrawLine(transform.position, new Vector3(transform.position.x + 1000,transform.position.y,0));
+     }*/
 
     void Fire()
     {
