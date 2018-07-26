@@ -21,6 +21,9 @@ public class Player : MonoBehaviour {
     Animator myAnimator;
     float gravityScaleAtStart;
 
+    public GameObject respawnPostion;
+
+
 	// Use this for initialization
 	void Start () {
         myRigidBody = GetComponent<Rigidbody2D>();
@@ -118,8 +121,10 @@ public class Player : MonoBehaviour {
         transform.localScale = new Vector2(Mathf.Sign(diff), 1);
     }
 
-    private void Death()
+    public void Death()
     {
-        Death();
+        //Death();
+        this.transform.position = respawnPostion.transform.position;
+        this.gameObject.GetComponent<PlayerHealthManager>().revive();
     }
 }
