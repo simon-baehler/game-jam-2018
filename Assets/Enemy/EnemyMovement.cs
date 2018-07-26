@@ -11,7 +11,8 @@ public class EnemyMovement : MonoBehaviour {
     public LayerMask layerMask;
     private string status = "moving";
     public GameObject bulletPrefab;
-    public Transform bulletSpawn;
+    public Transform firePos;
+    private float timeFire = 1f;
 
 
     // Use this for initialization
@@ -73,7 +74,7 @@ public class EnemyMovement : MonoBehaviour {
 
     bool DetectedTower()
     {
-        return Physics2D.Raycast(transform.position, transform.right, 10 , layerMask);
+        return Physics2D.Raycast(transform.position, transform.right, 5 , layerMask);
     }
 
     private void OnDrawGizmos()
@@ -83,17 +84,14 @@ public class EnemyMovement : MonoBehaviour {
 
     void Fire()
     {
-        // Create the Bullet from the Bullet Prefab
-        var bullet = (GameObject)Instantiate(
-            bulletPrefab,
-            this.gameObject.transform.position,
-            this.gameObject.transform.rotation);
-
-        // Add velocity to the bullet
-        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
-
-        // Destroy the bullet after 2 seconds
-        Destroy(bullet, 2.0f);
+        Debug.Log("1");
+        timeFire -= Time.deltaTime;
+        if (timeFire <= 0)
+        {
+            Debug.Log("2");
+            Instantiate(bulletPrefab, firePos.transform.position, Quaternion.identity);
+            timeFire = 1f;
+        }
     }
 
     public void TakeDamage(float Damage)
