@@ -31,10 +31,4 @@ public class bulletCtrl : MonoBehaviour {
         }
        Debug.Log(collision.gameObject.layer);
     }
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("FUIFUI");
-    }
 }
