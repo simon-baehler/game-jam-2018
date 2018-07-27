@@ -1953,7 +1953,9 @@ MonoBehaviour:
   m_OnlineScene: 
   m_SpawnPrefabs:
   - {fileID: 1362712177449688, guid: 5f31317fc31eb1b48b8e4ff679010a84, type: 2}
-  - {fileID: 1148823199708462, guid: 8148eaa5ca1b5c04f8ac4d2ea6427b76, type: 2}
+  - {fileID: 1236249245939940, guid: 0e7e605613c47d54a9bc5eea75e9df04, type: 2}
+  - {fileID: 1576085116517266, guid: 9ec5395d0027db246b9e2abae736f896, type: 2}
+  - {fileID: 0}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -2022,7 +2024,7 @@ MonoBehaviour:
   lobbySlots: []
   prematchCountdown: 3
   topPanel: {fileID: 0}
-  level: {fileID: 114019553116465796, guid: 6e95b8c6e4dd3384dbcdb88adfae009a, type: 2}
+  level: {fileID: 0}
   mainMenuPanel: {fileID: 1184592944}
   lobbyPanel: {fileID: 399616173}
   infoPanel: {fileID: 398207812}

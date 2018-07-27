@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class EnemyMovement : MonoBehaviour {
 
@@ -43,23 +44,23 @@ public class EnemyMovement : MonoBehaviour {
 
         if (DetectedTower()) {
             m_RigidBody.velocity = new Vector2(0f, 0f);
-            Fire();
+            CmdFire();
         };
         if (DetectedNexus()) {
             m_RigidBody.velocity = new Vector2(0f, 0f);
-            Fire();
+            CmdFire();
         };
 
         if (DetectedMinion())
         {
             m_RigidBody.velocity = new Vector2(0f, 0f);
-            Fire();
+            CmdFire();
         };
 
         if (DetectedPlayer())
         {
             m_RigidBody.velocity = new Vector2(0f, 0f);
-            Fire();
+            CmdFire();
         };
 
 
@@ -118,13 +119,16 @@ public class EnemyMovement : MonoBehaviour {
         }
     }
 
-    void Fire()
+    [Command]
+    void CmdFire()
     {
         timeFire -= Time.deltaTime;
         if (timeFire <= 0)
         {           
             Instantiate(bulletPrefab, firePos.transform.position, Quaternion.identity);
             timeFire = 1f;
+            NetworkServer.Spawn(bulletPrefab);
+
         }
     }
 }
