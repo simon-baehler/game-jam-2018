@@ -34,6 +34,11 @@ public class HealtManagerNexus : MonoBehaviour {
         healthBar.sizeDelta = new Vector2(currentHealth, healthBar.sizeDelta.y);
     }
 
+    public float getCurrentHP()
+    {
+        return currentHealth;
+    }
+
     public void Death()
     {
         TowerAudio.Play();

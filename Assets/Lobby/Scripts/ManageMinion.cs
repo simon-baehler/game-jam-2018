@@ -10,6 +10,7 @@ public class ManageMinion : MonoBehaviour {
     GameObject EnemyClone;
     public GameObject pointDepart;
     private float timeToInsert = 15f;
+    public int team;
 
 	// Update is called once per frame
 	void Update () {
@@ -23,6 +24,10 @@ public class ManageMinion : MonoBehaviour {
             Instantiate(Enemy3, pointDepart.transform.position + new Vector3(2, 0, 0), Quaternion.identity);
             timeToInsert = 15f;
         }
+    }
+
+    public int getTeam() {
+        return team;
     }
 }
 

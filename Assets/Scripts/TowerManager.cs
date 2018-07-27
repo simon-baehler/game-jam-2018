@@ -54,7 +54,7 @@ public class TowerManager : MonoBehaviour
         int Team1TowerIndex = LayerMask.NameToLayer("Team1-Tower");
         int Team1bulletIndex = LayerMask.NameToLayer("Team1-Bullet");
         int Team2TowerIndex = LayerMask.NameToLayer("Team2-Tower");
-        int Team2bulletIndex = LayerMask.NameToLayer("Team2-Bullet");
+        int Team2bulletIndex = LayerMask.NameToLayer("Team2-Bullet"); 
 
         if (this.gameObject.layer == Team1TowerIndex) {
             bullet.layer = Team1bulletIndex;
@@ -69,17 +69,20 @@ public class TowerManager : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-
+        Debug.Log("loloo");
         if (!haveAFocus) {
             //TODO : remplacer name par tag
             if (col.gameObject.tag == "minion")
             {
+
+                Debug.Log("minion");
                 Vector2 targetPosition = col.gameObject.transform.position;
                 currentTarget = col.gameObject.GetInstanceID();
                 haveAFocus = true;
                 targetGameObject = col.gameObject;
                 if (canShoot)
                 {
+                    Debug.Log("shoot");
                     canShoot = false;
                     timeLeftBeforeShooting = 5.0f;   
                     this.Fire(targetPosition);
@@ -119,14 +122,17 @@ public class TowerManager : MonoBehaviour
             }
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         //set target null
-        if (targetGameObject.GetInstanceID() == collision.GetInstanceID()) {
-            currentTarget = 0;
-            targetGameObject = null;
-            haveAFocus = false;
+        if (targetGameObject) {
+            if (targetGameObject.GetInstanceID() == collision.GetInstanceID())
+            {
+                currentTarget = 0;
+                targetGameObject = null;
+                haveAFocus = false;
+            }
         }
-       
     }
 }

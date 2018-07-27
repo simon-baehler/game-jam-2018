@@ -126,12 +126,14 @@ public class NexusManager2 : MonoBehaviour {
     private void OnTriggerExit2D(Collider2D collision)
     {
         //set target null
-        if (targetGameObject.GetInstanceID() == collision.GetInstanceID())
+        if (targetGameObject)
         {
-            currentTarget = 0;
-            targetGameObject = null;
-            haveAFocus = false;
+            if (targetGameObject.GetInstanceID() == collision.GetInstanceID())
+            {
+                currentTarget = 0;
+                targetGameObject = null;
+                haveAFocus = false;
+            }
         }
-
     }
 }
