@@ -12,7 +12,7 @@ public class NetworkGameManager : NetworkBehaviour {
     public GameObject Nexus;
 
     public Sprite BlueNexus;
-    public Sprite 
+    public Sprite sp;
 
     private Transform RedTowerSpawn;
     private Transform BlueTowerSpawn;
