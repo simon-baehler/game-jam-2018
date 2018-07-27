@@ -24,9 +24,11 @@ GameObject:
   - component: {fileID: 114955786369887054}
   - component: {fileID: 61227483772567092}
   - component: {fileID: 114843028512076692}
-  m_Layer: 12
-  m_Name: tower
-  m_TagString: Untagged
+  - component: {fileID: 82266971343405344}
+  - component: {fileID: 114144596322778428}
+  m_Layer: 14
+  m_Name: Tower
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,7 +43,7 @@ GameObject:
   - component: {fileID: 224358025625267990}
   - component: {fileID: 222316324175068868}
   - component: {fileID: 114607160785066540}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +61,7 @@ GameObject:
   - component: {fileID: 223151877456384892}
   - component: {fileID: 114886154730366136}
   - component: {fileID: 114875144573530852}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: Healthbar Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +78,7 @@ GameObject:
   - component: {fileID: 224013662028225628}
   - component: {fileID: 222745868369852690}
   - component: {fileID: 114243832427332808}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,8 +92,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1148823199708462}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.44, y: 2, z: 0}
-  m_LocalScale: {x: 1.5, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224390758790878342}
   m_Father: {fileID: 0}
@@ -137,6 +139,133 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3722911, y: 6.108509}
   m_EdgeRadius: 0
+--- !u!82 &82266971343405344
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1148823199708462}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d85cab3613c9f4517a197585b349ee6f, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &114144596322778428
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1148823199708462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 129
+    i1: 72
+    i2: 234
+    i3: 165
+    i4: 202
+    i5: 27
+    i6: 92
+    i7: 4
+    i8: 248
+    i9: 172
+    i10: 77
+    i11: 46
+    i12: 166
+    i13: 66
+    i14: 123
+    i15: 118
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114243832427332808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -199,11 +328,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1148823199708462}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f1976d6b7bb1724bbe47e13408bd08c, type: 3}
+  m_Script: {fileID: 11500000, guid: a68d4dc440c1ae84db8b37fd69015e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 100
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 224013662028225628}
 --- !u!114 &114875144573530852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -249,7 +378,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1148823199708462}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 543ae91e284baa34b8fb99c38a44b261, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f1520e085a5e0c47815311874236b56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1655326570435006, guid: 760ca72b56516b94398ae7e578caace2,
@@ -287,8 +416,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2040157033
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1a9ba3896e7e4194d8e4698fe4ed918d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -388,6 +517,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.22, y: 0.33}
   m_SizeDelta: {x: 2, y: 7}
   m_Pivot: {x: 0.5, y: 0.5}
