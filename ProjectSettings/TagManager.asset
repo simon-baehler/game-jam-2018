@@ -6,6 +6,8 @@ TagManager:
   tags:
   - minion
   - Tower
+  - Background
+  - RedTowerSpawnPoint
   layers:
   - Default
   - TransparentFX
