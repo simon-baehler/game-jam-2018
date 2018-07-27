@@ -44,23 +44,23 @@ public class EnemyMovement : NetworkBehaviour {
 
         if (DetectedTower()) {
             m_RigidBody.velocity = new Vector2(0f, 0f);
-            Fire();
+            CmdFire();
         };
         if (DetectedNexus()) {
             m_RigidBody.velocity = new Vector2(0f, 0f);
-            Fire();
+            CmdFire();
         };
 
         if (DetectedMinion())
         {
             m_RigidBody.velocity = new Vector2(0f, 0f);
-            Fire();
+            CmdFire();
         };
 
         if (DetectedPlayer())
         {
             m_RigidBody.velocity = new Vector2(0f, 0f);
-            Fire();
+            CmdFire();
         };
 
 
@@ -119,13 +119,16 @@ public class EnemyMovement : NetworkBehaviour {
         }
     }
 
-    void Fire()
+    [Command]
+    void CmdFire()
     {
         timeFire -= Time.deltaTime;
         if (timeFire <= 0)
         {           
             Instantiate(bulletPrefab, firePos.transform.position, Quaternion.identity);
             timeFire = 1f;
+            NetworkServer.Spawn(bulletPrefab);
+
         }
     }
 }

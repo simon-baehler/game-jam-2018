@@ -1,4 +1,4 @@
-﻿using Cinemachine;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -28,7 +28,6 @@ public class Player : NetworkBehaviour {
     // Spawn points
     private NetworkStartPosition[] spawnPoints;
     public GameObject respawnPostion;
-
 
 	// Use this for initialization
 	void Awake () {

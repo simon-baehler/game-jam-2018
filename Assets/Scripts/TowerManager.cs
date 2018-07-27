@@ -45,6 +45,7 @@ public class TowerManager : NetworkBehaviour
         }
     }
 
+    [Command]
     void Fire(Vector2 targetPosition)
     {
         // Create the Bullet from the Bullet Prefab
@@ -65,6 +66,7 @@ public class TowerManager : NetworkBehaviour
         }
         Vector2 targetVect = new Vector2(targetPosition.x - this.transform.position.x  , targetPosition.y - this.transform.position.y);
         bullet.GetComponent<Rigidbody2D>().velocity = targetVect;
+        NetworkServer.Spawn(bullet);
         Destroy(bullet, 5.0f);
     }
 

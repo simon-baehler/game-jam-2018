@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 50439710979914830}
   - component: {fileID: 114164901856409008}
   - component: {fileID: 114694939471101992}
+  - component: {fileID: 114387758405943980}
+  - component: {fileID: 114596857116639642}
   m_Layer: 19
   m_Name: bulletEnemy_team2
   m_TagString: Untagged
@@ -91,6 +93,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: -7, y: 0}
+--- !u!114 &114387758405943980
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1576085116517266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 158
+    i1: 197
+    i2: 57
+    i3: 93
+    i4: 0
+    i5: 39
+    i6: 219
+    i7: 36
+    i8: 107
+    i9: 158
+    i10: 42
+    i11: 186
+    i12: 231
+    i13: 54
+    i14: 248
+    i15: 150
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114596857116639642
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1576085116517266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 2
+  m_SendInterval: 0
+  m_SyncRotationAxis: 3
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114694939471101992
 MonoBehaviour:
   m_ObjectHideFlags: 1

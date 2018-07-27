@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 82266971343405344}
   - component: {fileID: 114144596322778428}
   m_Layer: 14
-  m_Name: Tower
+  m_Name: tower
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -248,22 +248,22 @@ MonoBehaviour:
   m_SceneId:
     m_Value: 0
   m_AssetId:
-    i0: 129
-    i1: 72
-    i2: 234
-    i3: 165
-    i4: 202
-    i5: 27
+    i0: 110
+    i1: 112
+    i2: 194
+    i3: 83
+    i4: 67
+    i5: 158
     i6: 92
-    i7: 4
-    i8: 248
-    i9: 172
-    i10: 77
-    i11: 46
-    i12: 166
+    i7: 20
+    i8: 152
+    i9: 143
+    i10: 236
+    i11: 4
+    i12: 186
     i13: 66
-    i14: 123
-    i15: 118
+    i14: 132
+    i15: 71
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
 --- !u!114 &114243832427332808
