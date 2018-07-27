@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class TowerManager : MonoBehaviour
+public class TowerManager : NetworkBehaviour
 {
 
     public GameObject bulletPrefab;
@@ -30,6 +31,7 @@ public class TowerManager : MonoBehaviour
         canShoot = true;
         timeLeftBeforeShooting = SHOOTING_INTERVAL;
     }
+
     void Update()
     {
         if (!canShoot)

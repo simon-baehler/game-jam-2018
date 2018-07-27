@@ -23,6 +23,7 @@ namespace Prototype.NetworkLobby
         [Space]
         [Header("UI Reference")]
         public LobbyTopPanel topPanel;
+        public LevelManager level;
 
         public RectTransform mainMenuPanel;
         public RectTransform lobbyPanel;
@@ -64,9 +65,17 @@ namespace Prototype.NetworkLobby
             DontDestroyOnLoad(gameObject);
         }
 
-        /*public override void OnLobbyClientSceneChanged(NetworkConnection conn)
+        public void LoadMainMenu()
         {
-            if (SceneManager.GetSceneAt(0).name == lobbyScene)
+            level.LoadLevel("MainMenu");
+        }
+
+       public override void OnLobbyClientSceneChanged(NetworkConnection conn)
+        {
+            currentPanel.gameObject.SetActive(false);
+            backDelegate = LoadMainMenu;
+
+            /*if (SceneManager.GetSceneAt(0).name == lobbyScene)
             {
                 if (topPanel.isInGame)
                 {
@@ -111,8 +120,8 @@ namespace Prototype.NetworkLobby
                 //backDelegate = StopGameClbk;
                 topPanel.isInGame = true;
                 topPanel.ToggleVisibility(false);
-            }
-        }*/
+            }*/
+        }
 
         public void ChangeTo(RectTransform newPanel)
         {
@@ -377,7 +386,6 @@ namespace Prototype.NetworkLobby
 
         public override void OnClientConnect(NetworkConnection conn)
         {
-            Debug.Log("Client");
             base.OnClientConnect(conn);
 
             infoPanel.gameObject.SetActive(false);

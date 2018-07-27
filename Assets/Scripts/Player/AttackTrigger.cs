@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class AttackTrigger : MonoBehaviour {
+public class AttackTrigger : NetworkBehaviour {
 
     public float damage = 10f;
 
