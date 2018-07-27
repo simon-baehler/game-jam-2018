@@ -31,6 +31,7 @@ public class bulletCtrl : MonoBehaviour {
         int idTeam2Nexus;
         int idTeam2Minion;
         int idTeamPlayer;
+
         if (this.gameObject.layer == 15)
         {
             idTeam2TowerLayer = LayerMask.NameToLayer("Team2-Tower");
@@ -52,7 +53,7 @@ public class bulletCtrl : MonoBehaviour {
                 towerH.TakeDamage(1);
             }
         }
-        if (collision.gameObject.layer == idTeam2Nexus && collision.tag == "Nexus")
+        else if (collision.gameObject.layer == idTeam2Nexus && collision.tag == "Nexus")
         {
             if (!collision.isTrigger)
             {
@@ -60,7 +61,7 @@ public class bulletCtrl : MonoBehaviour {
                 nexus.TakeDamage(1);
             }
         }
-        if (collision.gameObject.layer == idTeam2Minion && collision.tag == "minion")
+        else if (collision.gameObject.layer == idTeam2Minion && collision.tag == "minion")
         {
             if (!collision.isTrigger)
             {
@@ -68,8 +69,7 @@ public class bulletCtrl : MonoBehaviour {
                 minion.TakeDamage(2);
             }
         }
-
-        if (collision.gameObject.layer == idTeamPlayer && collision.tag == "Player")
+        else if (collision.gameObject.layer == idTeamPlayer && collision.tag == "Player")
         {
             if (!collision.isTrigger)
             {

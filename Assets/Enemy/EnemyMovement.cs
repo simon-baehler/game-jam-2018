@@ -63,7 +63,6 @@ public class EnemyMovement : NetworkBehaviour {
             CmdFire();
         };
 
-
     }
 
     private bool IsFacingRight()
@@ -125,9 +124,9 @@ public class EnemyMovement : NetworkBehaviour {
         timeFire -= Time.deltaTime;
         if (timeFire <= 0)
         {           
-            Instantiate(bulletPrefab, firePos.transform.position, Quaternion.identity);
+            GameObject bullet = Instantiate(bulletPrefab, firePos.transform.position, Quaternion.identity);
             timeFire = 1f;
-            NetworkServer.Spawn(bulletPrefab);
+            NetworkServer.Spawn(bullet);
 
         }
     }
