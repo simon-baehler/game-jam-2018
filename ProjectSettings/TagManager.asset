@@ -6,6 +6,7 @@ TagManager:
   tags:
   - minion
   - Tower
+  - Nexus
   - Background
   - RedTowerSpawnPoint
   layers:
@@ -21,14 +22,14 @@ TagManager:
   - Ground
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Team1-Player
+  - Team1-Minion
+  - Team1-Tower
+  - Team1-Bullet
+  - Team2-Player
+  - Team2-Minion
+  - Team2-Tower
+  - Team2-Bullet
   - 
   - 
   - 

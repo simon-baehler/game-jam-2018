@@ -8,10 +8,16 @@ public class EnemyMovement : MonoBehaviour {
 
     Rigidbody2D m_RigidBody;
     Collider2D m_Collider;
-    public LayerMask layerMask;
+    public LayerMask layerMaskTower;
+    public LayerMask layerMaskNexus;
+    public LayerMask layerMaskMinion;
+    public LayerMask layerMaskPlayer;
     private string status = "moving";
     public GameObject bulletPrefab;
-    public Transform bulletSpawn;
+    public Transform firePos;
+    private float timeFire = 1f;
+
+    private Renderer rend;
 
 
     // Use this for initialization
@@ -25,7 +31,7 @@ public class EnemyMovement : MonoBehaviour {
     {
         if (status == "moving")
         {
-            if (IsFacingRight())
+            if (this.gameObject.layer == 13)
             {
                 m_RigidBody.velocity = new Vector2(moveSpeed, 0f);
             }
@@ -36,18 +42,27 @@ public class EnemyMovement : MonoBehaviour {
         }
 
         if (DetectedTower()) {
-            Debug.Log("Detected2");
+            m_RigidBody.velocity = new Vector2(0f, 0f);
+            Fire();
+        };
+        if (DetectedNexus()) {
+            m_RigidBody.velocity = new Vector2(0f, 0f);
+            Fire();
+        };
+
+        if (DetectedMinion())
+        {
+            m_RigidBody.velocity = new Vector2(0f, 0f);
+            Fire();
+        };
+
+        if (DetectedPlayer())
+        {
             m_RigidBody.velocity = new Vector2(0f, 0f);
             Fire();
         };
 
 
-
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        transform.localScale = new Vector2(-(Mathf.Sign(m_RigidBody.velocity.x)), 1f);
     }
 
     private bool IsFacingRight()
@@ -55,49 +70,61 @@ public class EnemyMovement : MonoBehaviour {
         return transform.localScale.x > 0;
     }
 
-    /*
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        int idTeam1_tower = LayerMask.NameToLayer("Team1-Tower");
-        int idTeam2_tower = LayerMask.NameToLayer("Team2-Tower");
-
-        int m_layer = this.gameObject.layer;
-
-        if (collision.gameObject.layer == idTeam1_tower || collision.gameObject.layer == idTeam2_tower) {
-            //stop moving and attack
-            m_RigidBody.velocity = new Vector2(0f, 0f);
-            status = "attacking";
-        }
-
-    }*/
-
     bool DetectedTower()
     {
-        return Physics2D.Raycast(transform.position, transform.right, 10 , layerMask);
+        if (this.gameObject.layer == 13)
+        {
+            return Physics2D.Raycast(transform.position, transform.right, 5, layerMaskTower);
+        }
+        else {
+            return Physics2D.Raycast(transform.position, transform.right, -5, layerMaskTower);
+        }
+    }
+    bool DetectedNexus()
+    {
+        if (this.gameObject.layer == 13)
+        {
+            return Physics2D.Raycast(transform.position, transform.right, 5, layerMaskTower);
+        }
+        else
+        {
+            return Physics2D.Raycast(transform.position, transform.right, -5, layerMaskTower);
+        }
     }
 
-    private void OnDrawGizmos()
+
+    bool DetectedMinion()
     {
-        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x + 1000,transform.position.y,0));
+        if (this.gameObject.layer == 13)
+        {
+            return Physics2D.Raycast(transform.position, transform.right, 5, layerMaskMinion);
+        }
+        else
+        {
+            return Physics2D.Raycast(transform.position, transform.right, -5, layerMaskMinion);
+        }
+    }
+
+
+    bool DetectedPlayer()
+    {
+        if (this.gameObject.layer == 13)
+        {
+            return Physics2D.Raycast(transform.position, transform.right, 5, layerMaskPlayer);
+        }
+        else
+        {
+            return Physics2D.Raycast(transform.position, transform.right, -5, layerMaskPlayer);
+        }
     }
 
     void Fire()
     {
-        // Create the Bullet from the Bullet Prefab
-        var bullet = (GameObject)Instantiate(
-            bulletPrefab,
-            this.gameObject.transform.position,
-            this.gameObject.transform.rotation);
-
-        // Add velocity to the bullet
-        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
-
-        // Destroy the bullet after 2 seconds
-        Destroy(bullet, 2.0f);
-    }
-
-    public void TakeDamage(float Damage)
-    {
-        Destroy(gameObject);
+        timeFire -= Time.deltaTime;
+        if (timeFire <= 0)
+        {           
+            Instantiate(bulletPrefab, firePos.transform.position, Quaternion.identity);
+            timeFire = 1f;
+        }
     }
 }

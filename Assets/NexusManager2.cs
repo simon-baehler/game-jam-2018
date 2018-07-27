@@ -1,10 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
-public class TowerManager : NetworkBehaviour
-{
+public class NexusManager2 : MonoBehaviour {
 
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
@@ -23,7 +21,7 @@ public class TowerManager : NetworkBehaviour
     int Team2TowerIndex;
     int Team2bulletIndex;
 
-    const float SHOOTING_INTERVAL = 5.0f;
+    const float SHOOTING_INTERVAL = 1.5f;
     // Use this for initialization
     void Start()
     {
@@ -31,7 +29,6 @@ public class TowerManager : NetworkBehaviour
         canShoot = true;
         timeLeftBeforeShooting = SHOOTING_INTERVAL;
     }
-
     void Update()
     {
         if (!canShoot)
@@ -56,14 +53,17 @@ public class TowerManager : NetworkBehaviour
         int Team1TowerIndex = LayerMask.NameToLayer("Team1-Tower");
         int Team1bulletIndex = LayerMask.NameToLayer("Team1-Bullet");
         int Team2TowerIndex = LayerMask.NameToLayer("Team2-Tower");
-        int Team2bulletIndex = LayerMask.NameToLayer("Team2-Bullet"); 
+        int Team2bulletIndex = LayerMask.NameToLayer("Team2-Bullet");
 
-        if (this.gameObject.layer == Team1TowerIndex) {
+        if (this.gameObject.layer == Team1TowerIndex)
+        {
             bullet.layer = Team1bulletIndex;
-        }else{
+        }
+        else
+        {
             bullet.layer = Team2bulletIndex;
         }
-        Vector2 targetVect = new Vector2(targetPosition.x - this.transform.position.x  , targetPosition.y - this.transform.position.y);
+        Vector2 targetVect = new Vector2(targetPosition.x - this.transform.position.x, targetPosition.y - this.transform.position.y);
         bullet.GetComponent<Rigidbody2D>().velocity = targetVect;
         Destroy(bullet, 5.0f);
     }
@@ -71,22 +71,20 @@ public class TowerManager : NetworkBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("loloo");
-        if (!haveAFocus) {
+
+        if (!haveAFocus)
+        {
             //TODO : remplacer name par tag
             if (col.gameObject.tag == "minion")
             {
-
-                Debug.Log("minion");
                 Vector2 targetPosition = col.gameObject.transform.position;
                 currentTarget = col.gameObject.GetInstanceID();
                 haveAFocus = true;
                 targetGameObject = col.gameObject;
                 if (canShoot)
                 {
-                    Debug.Log("shoot");
                     canShoot = false;
-                    timeLeftBeforeShooting = 5.0f;   
+                    timeLeftBeforeShooting = 5.0f;
                     this.Fire(targetPosition);
                 }
             }
@@ -112,7 +110,8 @@ public class TowerManager : NetworkBehaviour
                 }
             }
         }
-        else {
+        else
+        {
             Vector2 targetPosition = targetGameObject.transform.position;
             currentTarget = col.gameObject.GetInstanceID();
             haveAFocus = true;
@@ -124,11 +123,11 @@ public class TowerManager : NetworkBehaviour
             }
         }
     }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         //set target null
-        if (targetGameObject) {
+        if (targetGameObject)
+        {
             if (targetGameObject.GetInstanceID() == collision.GetInstanceID())
             {
                 currentTarget = 0;

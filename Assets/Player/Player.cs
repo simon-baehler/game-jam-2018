@@ -25,8 +25,13 @@ public class Player : NetworkBehaviour {
     Animator myAnimator;
     float gravityScaleAtStart;
 
+<<<<<<< HEAD
     // Spawn points
     private NetworkStartPosition[] spawnPoints;
+=======
+    public GameObject respawnPostion;
+
+>>>>>>> master
 
 	// Use this for initialization
 	void Awake () {
@@ -148,9 +153,11 @@ public class Player : NetworkBehaviour {
         transform.localScale = new Vector2(Mathf.Sign(diff), 1);
     }
 
-    private void Death()
+    public void Death()
     {
-        Death();
+        //Death();
+        this.transform.position = respawnPostion.transform.position;
+        this.gameObject.GetComponent<PlayerHealthManager>().revive();
     }
 
     // --------------- Network -------------------
