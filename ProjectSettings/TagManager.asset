@@ -9,6 +9,7 @@ TagManager:
   - Nexus
   - Background
   - RedTowerSpawnPoint
+  - BlueTowerSpawnPoint
   layers:
   - Default
   - TransparentFX

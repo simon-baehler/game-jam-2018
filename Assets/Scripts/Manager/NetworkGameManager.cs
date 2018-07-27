@@ -11,11 +11,13 @@ public class NetworkGameManager : NetworkBehaviour {
     public GameObject Tower;
     public GameObject Nexus;
 
+    public Sprite BlueNexus;
+    public Sprite 
 
     private Transform RedTowerSpawn;
-    public Transform BlueTowerSpawn;
-    public Transform RedNexusSpawn;
-    public Transform BlueNexusSpawn;
+    private Transform BlueTowerSpawn;
+    private Transform RedNexusSpawn;
+    private Transform BlueNexusSpawn;
 
 
 	// Use this for initialization
@@ -24,8 +26,13 @@ public class NetworkGameManager : NetworkBehaviour {
         GameObject redTower = Instantiate(Tower, RedTowerSpawn);
         redTower.layer = LayerMask.NameToLayer(RED_TOWER_LAYER);
 
+        BlueTowerSpawn = GameObject.FindGameObjectWithTag("BlueTowerSpawnPoint").transform;
+        GameObject blueTower = Instantiate(Tower, BlueTowerSpawn);
+        blueTower.layer = LayerMask.NameToLayer(BLUE_TOWER_LAYER);
+
         Debug.Log(redTower.transform.position);
         NetworkServer.Spawn(redTower);
+        NetworkServer.Spawn(blueTower);
     }
 	
 	// Update is called once per frame

@@ -84,9 +84,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b17726c68d789f84c9a5f35d9ff018d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tower: {fileID: 1148823199708462, guid: 8148eaa5ca1b5c04f8ac4d2ea6427b76, type: 2}
-  Nexus: {fileID: 0}
-  RedTowerSpawn: {fileID: 0}
-  BlueTowerSpawn: {fileID: 0}
-  RedNexusSpawn: {fileID: 0}
-  BlueNexusSpawn: {fileID: 0}
+  Tower: {fileID: 1148823199708462, guid: 6e70c253439e5c14988fec04ba428447, type: 2}
+  Nexus: {fileID: 1297647950125614, guid: 6d006788ac1d2514784839f24c7e1f59, type: 2}
