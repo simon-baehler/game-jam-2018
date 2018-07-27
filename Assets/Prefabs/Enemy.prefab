@@ -40,9 +40,10 @@ GameObject:
   - component: {fileID: 50079388148575630}
   - component: {fileID: 61815903951290250}
   - component: {fileID: 95614039992463248}
-  - component: {fileID: 114111000429945640}
   - component: {fileID: 58690987888407386}
+  - component: {fileID: 114111000429945640}
   - component: {fileID: 114869310090296206}
+  - component: {fileID: 114711696156470060}
   m_Layer: 13
   m_Name: Enemy
   m_TagString: minion
@@ -281,6 +282,38 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114711696156470060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1453947319081044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 223
+    i1: 116
+    i2: 10
+    i3: 147
+    i4: 134
+    i5: 230
+    i6: 86
+    i7: 116
+    i8: 41
+    i9: 140
+    i10: 140
+    i11: 65
+    i12: 132
+    i13: 242
+    i14: 178
+    i15: 193
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114869310090296206
 MonoBehaviour:
   m_ObjectHideFlags: 1
