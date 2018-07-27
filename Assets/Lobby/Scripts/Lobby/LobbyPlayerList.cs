@@ -23,12 +23,6 @@ namespace Prototype.NetworkLobby
             _layout = playerListContentTransform.GetComponent<VerticalLayoutGroup>();
         }
 
-        public void DisplayDirectServerWarning(bool enabled)
-        {
-            if(warningDirectPlayServer != null)
-                warningDirectPlayServer.SetActive(enabled);
-        }
-
         void Update()
         {
             //this dirty the layout to force it to recompute evryframe (a sync problem between client/server
