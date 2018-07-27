@@ -8,7 +8,7 @@ public class bullet : MonoBehaviour {
 
     void Start ()
     {
-        Debug.Log("Fired");
+        Debug.Log("Fired bullet");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -18,7 +18,7 @@ public class bullet : MonoBehaviour {
             MinionHealthManager enemyScript = collision.gameObject.GetComponent<MinionHealthManager>();
             enemyScript.TakeDamage(damage);
         }
-
+        Debug.Log(collision.gameObject.name);
         Destroy(this.gameObject);
     }
 }

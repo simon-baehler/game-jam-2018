@@ -23,19 +23,34 @@ public class bulletCtrl : MonoBehaviour {
         HealthManager towerH = collision.GetComponent<HealthManager>();
         HealtManagerNexus nexus = collision.GetComponent<HealtManagerNexus>();
 
-        int idTeam2TowerLayer = LayerMask.NameToLayer("Team2-Tower");
-        int idTeam2Nexus = LayerMask.NameToLayer("Team2-Nexus");
 
-        if (collision.gameObject.layer == idTeam2TowerLayer)
-        { 
-            Destroy(gameObject);
-            towerH.TakeDamage(5);
-        }
-        if(collision.gameObject.layer == idTeam2Nexus)
+        
+        int idTeam2TowerLayer;
+        int idTeam2Nexus;
+        if (this.gameObject.layer == 15)
         {
-            Destroy(gameObject);
-            nexus.TakeDamage(5);
+            idTeam2TowerLayer = LayerMask.NameToLayer("Team2-Tower");
+            idTeam2Nexus = LayerMask.NameToLayer("Team2-Tower");
         }
-       Debug.Log(collision.gameObject.layer);
+        else {
+            idTeam2TowerLayer = LayerMask.NameToLayer("Team1-Tower");
+            idTeam2Nexus = LayerMask.NameToLayer("Team1-Tower");
+        }
+
+        if (collision.gameObject.layer == idTeam2TowerLayer && collision.tag != "Nexus")
+        {
+            if (!collision.isTrigger) {
+                Destroy(gameObject);
+                towerH.TakeDamage(1);
+            }
+        }
+        if (collision.gameObject.layer == idTeam2Nexus && collision.tag == "Nexus")
+        {
+            if (!collision.isTrigger)
+            {
+                Destroy(gameObject);
+                towerH.TakeDamage(1);
+            }
+        }
     }
 }

@@ -247,10 +247,16 @@ MonoBehaviour:
   moveSpeed: 4
   layerMaskTower:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 262144
   layerMaskNexus:
     serializedVersion: 2
-    m_Bits: 32768
+    m_Bits: 262144
+  layerMaskMinion:
+    serializedVersion: 2
+    m_Bits: 131072
+  layerMaskPlayer:
+    serializedVersion: 2
+    m_Bits: 65536
   bulletPrefab: {fileID: 1236249245939940, guid: 0e7e605613c47d54a9bc5eea75e9df04,
     type: 2}
   firePos: {fileID: 4074097332871858}

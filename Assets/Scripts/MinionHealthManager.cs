@@ -8,6 +8,12 @@ public class MinionHealthManager : MonoBehaviour {
     public float currentHealth = maxHealth;
     public RectTransform healthBar;
 
+
+    public void Start()
+    {
+        if(this.gameObject.layer == 17)
+            gameObject.GetComponent<Renderer>().material.color = Color.blue;
+    }
     private void Update()
     {
         healthBar.sizeDelta = new Vector2(currentHealth, healthBar.sizeDelta.y);
@@ -35,7 +41,13 @@ public class MinionHealthManager : MonoBehaviour {
     {
         gameObject.GetComponent<Renderer>().material.color = Color.red;
         yield return new WaitForSeconds(0.15f);
-        gameObject.GetComponent<Renderer>().material.color = Color.white;
+        if (this.gameObject.layer == 17) {
+            gameObject.GetComponent<Renderer>().material.color = Color.blue;
+        }else{
+            gameObject.GetComponent<Renderer>().material.color = Color.white;
+        }
+           
+        
     }   
 
     public void Death()

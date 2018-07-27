@@ -10,6 +10,8 @@ public class EnemyMovement : MonoBehaviour {
     Collider2D m_Collider;
     public LayerMask layerMaskTower;
     public LayerMask layerMaskNexus;
+    public LayerMask layerMaskMinion;
+    public LayerMask layerMaskPlayer;
     private string status = "moving";
     public GameObject bulletPrefab;
     public Transform firePos;
@@ -29,7 +31,7 @@ public class EnemyMovement : MonoBehaviour {
     {
         if (status == "moving")
         {
-            if (IsFacingRight())
+            if (this.gameObject.layer == 13)
             {
                 m_RigidBody.velocity = new Vector2(moveSpeed, 0f);
             }
@@ -48,12 +50,20 @@ public class EnemyMovement : MonoBehaviour {
             Fire();
         };
 
-    }
+        if (DetectedMinion())
+        {
+            m_RigidBody.velocity = new Vector2(0f, 0f);
+            Fire();
+        };
 
-    /*private void OnTriggerExit2D(Collider2D collision)
-    {
-        transform.localScale = new Vector2(-(Mathf.Sign(m_RigidBody.velocity.x)), 1f);
-    }*/
+        if (DetectedPlayer())
+        {
+            m_RigidBody.velocity = new Vector2(0f, 0f);
+            Fire();
+        };
+
+
+    }
 
     private bool IsFacingRight()
     {
@@ -62,17 +72,51 @@ public class EnemyMovement : MonoBehaviour {
 
     bool DetectedTower()
     {
-        return Physics2D.Raycast(transform.position, transform.right, 5 , layerMaskTower);
+        if (this.gameObject.layer == 13)
+        {
+            return Physics2D.Raycast(transform.position, transform.right, 5, layerMaskTower);
+        }
+        else {
+            return Physics2D.Raycast(transform.position, transform.right, -5, layerMaskTower);
+        }
     }
     bool DetectedNexus()
     {
-        return Physics2D.Raycast(transform.position, transform.right, 5, layerMaskNexus);
+        if (this.gameObject.layer == 13)
+        {
+            return Physics2D.Raycast(transform.position, transform.right, 5, layerMaskTower);
+        }
+        else
+        {
+            return Physics2D.Raycast(transform.position, transform.right, -5, layerMaskTower);
+        }
     }
 
-    /* private void OnDrawGizmos()
-     {
-         Gizmos.DrawLine(transform.position, new Vector3(transform.position.x + 1000,transform.position.y,0));
-     }*/
+
+    bool DetectedMinion()
+    {
+        if (this.gameObject.layer == 13)
+        {
+            return Physics2D.Raycast(transform.position, transform.right, 5, layerMaskMinion);
+        }
+        else
+        {
+            return Physics2D.Raycast(transform.position, transform.right, -5, layerMaskMinion);
+        }
+    }
+
+
+    bool DetectedPlayer()
+    {
+        if (this.gameObject.layer == 13)
+        {
+            return Physics2D.Raycast(transform.position, transform.right, 5, layerMaskPlayer);
+        }
+        else
+        {
+            return Physics2D.Raycast(transform.position, transform.right, -5, layerMaskPlayer);
+        }
+    }
 
     void Fire()
     {
