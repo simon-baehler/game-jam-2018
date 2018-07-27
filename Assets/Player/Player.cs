@@ -1,4 +1,4 @@
-﻿using Cinemachine;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.Networking;
 
