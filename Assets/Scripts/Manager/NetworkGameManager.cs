@@ -5,6 +5,9 @@ using UnityEngine.Networking;
 
 public class NetworkGameManager : NetworkBehaviour {
 
+    const string BLUE_TOWER_LAYER = "Team1-Tower";
+    const string RED_TOWER_LAYER = "Team2-Tower";
+
     public GameObject Tower;
     public GameObject Nexus;
 
@@ -19,6 +22,7 @@ public class NetworkGameManager : NetworkBehaviour {
 	void Awake () {
         RedTowerSpawn = GameObject.FindGameObjectWithTag("RedTowerSpawnPoint").transform;
         GameObject redTower = Instantiate(Tower, RedTowerSpawn);
+        redTower.layer = LayerMask.NameToLayer(RED_TOWER_LAYER);
 
         Debug.Log(redTower.transform.position);
         NetworkServer.Spawn(redTower);
