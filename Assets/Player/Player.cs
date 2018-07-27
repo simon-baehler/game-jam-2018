@@ -1,4 +1,4 @@
-﻿using Cinemachine;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -25,13 +25,9 @@ public class Player : NetworkBehaviour {
     Animator myAnimator;
     float gravityScaleAtStart;
 
-<<<<<<< HEAD
     // Spawn points
     private NetworkStartPosition[] spawnPoints;
-=======
     public GameObject respawnPostion;
-
->>>>>>> master
 
 	// Use this for initialization
 	void Awake () {
