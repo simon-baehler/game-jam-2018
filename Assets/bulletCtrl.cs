@@ -22,19 +22,27 @@ public class bulletCtrl : MonoBehaviour {
     {
         HealthManager towerH = collision.GetComponent<HealthManager>();
         HealtManagerNexus nexus = collision.GetComponent<HealtManagerNexus>();
+        MinionHealthManager minion = collision.GetComponent<MinionHealthManager>();
+        PlayerHealthManager player = collision.GetComponent<PlayerHealthManager>();
 
 
         
         int idTeam2TowerLayer;
         int idTeam2Nexus;
+        int idTeam2Minion;
+        int idTeamPlayer;
         if (this.gameObject.layer == 15)
         {
             idTeam2TowerLayer = LayerMask.NameToLayer("Team2-Tower");
             idTeam2Nexus = LayerMask.NameToLayer("Team2-Tower");
+            idTeam2Minion = LayerMask.NameToLayer("Team2-Minion");
+            idTeamPlayer = LayerMask.NameToLayer("Team2-Player");
         }
         else {
             idTeam2TowerLayer = LayerMask.NameToLayer("Team1-Tower");
             idTeam2Nexus = LayerMask.NameToLayer("Team1-Tower");
+            idTeam2Minion = LayerMask.NameToLayer("Team1-Minion");
+            idTeamPlayer = LayerMask.NameToLayer("Team1-Player");
         }
 
         if (collision.gameObject.layer == idTeam2TowerLayer && collision.tag != "Nexus")
@@ -49,8 +57,26 @@ public class bulletCtrl : MonoBehaviour {
             if (!collision.isTrigger)
             {
                 Destroy(gameObject);
-                towerH.TakeDamage(1);
+                nexus.TakeDamage(1);
             }
         }
+        if (collision.gameObject.layer == idTeam2Minion && collision.tag == "minion")
+        {
+            if (!collision.isTrigger)
+            {
+                Destroy(gameObject);
+                minion.TakeDamage(2);
+            }
+        }
+
+        if (collision.gameObject.layer == idTeamPlayer && collision.tag == "Player")
+        {
+            if (!collision.isTrigger)
+            {
+                Destroy(gameObject);
+                player.TakeDamage(2);
+            }
+        }
+
     }
 }
