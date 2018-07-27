@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class PlayerAttack : MonoBehaviour {
+public class PlayerAttack : NetworkBehaviour {
 
     public float attackSpeed = 1f;
 
@@ -25,13 +26,18 @@ public class PlayerAttack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        if(!isLocalPlayer)
+        {
+            return;
+        }
+
 		if(Input.GetButtonDown("Fire1") && !IsAttacking)
         {
             IsAttacking = true;
             attackTimer = attackSpeed;
             audioSource.Play();
 
-            attackTrigger.enabled = true;
+            CmdAttack();
         }
 
         if(IsAttacking)
@@ -48,5 +54,11 @@ public class PlayerAttack : MonoBehaviour {
         }
 
         anim.SetBool("IsAttacking", IsAttacking);
+    }
+
+    [Command]
+    void CmdAttack()
+    {
+        attackTrigger.enabled = true;
     }
 }
