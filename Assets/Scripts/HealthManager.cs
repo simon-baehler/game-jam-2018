@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class HealthManager : MonoBehaviour {
+public class HealthManager : NetworkBehaviour {
 
     public const float maxHealth = 100f;
-    public float currentHealth = maxHealth;
-    public RectTransform healthBar;
 
+    [SyncVar]
+    public float currentHealth = maxHealth;
+
+    public RectTransform healthBar;
     private AudioSource TowerAudio;
 
     private void Awake()
@@ -22,6 +25,11 @@ public class HealthManager : MonoBehaviour {
 
     public void TakeDamage(float amount)
     {
+        if(!isServer)
+        {
+            return;
+        }
+
         currentHealth -= amount;
         if (currentHealth <= 0)
         {
