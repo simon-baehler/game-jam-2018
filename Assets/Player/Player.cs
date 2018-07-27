@@ -25,13 +25,10 @@ public class Player : NetworkBehaviour {
     Animator myAnimator;
     float gravityScaleAtStart;
 
-<<<<<<< HEAD
     // Spawn points
     private NetworkStartPosition[] spawnPoints;
-=======
     public GameObject respawnPostion;
 
->>>>>>> master
 
 	// Use this for initialization
 	void Awake () {
@@ -163,17 +160,14 @@ public class Player : NetworkBehaviour {
     // --------------- Network -------------------
     public override void OnStartLocalPlayer()
     {
-        PolygonCollider2D background = GameObject.FindWithTag("Background").GetComponent<PolygonCollider2D>();
-        // base.OnStartLocalPlayer();
+        base.OnStartLocalPlayer();
         mySpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         mySpriteRenderer.color = new Color(0.5f, 0.7f, 1f, 1f);
 
         myCamera = GetComponentInChildren<CinemachineVirtualCamera>();
-        CinemachineConfiner cameraConfiner = GetComponentInChildren<CinemachineConfiner>();
 
         myCamera.enabled = true;
         myCamera.Follow = transform;
-        cameraConfiner.m_BoundingShape2D = background;
     }
 
     [ClientRpc]
