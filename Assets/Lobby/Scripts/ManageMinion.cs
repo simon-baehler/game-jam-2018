@@ -1,22 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class ManageMinion : MonoBehaviour {
+public class ManageMinion : NetworkBehaviour {
 
     public GameObject Enemy;
     GameObject EnemyClone;
     public GameObject pointDepart;
-    private float timeToInsert = 5f;
+    public float spawnFrequency = 5f;
+
+    private float timer = 5f;
 
 	// Update is called once per frame
 	void Update () {
-        //Insertion d'un Minion chaque 5 secondes à la position "pointDepart"
-        timeToInsert -= Time.deltaTime;
-        if(timeToInsert <= 0)
+        if (!isServer)
         {
-            EnemyClone = Instantiate(Enemy, pointDepart.transform.position, Quaternion.identity) as GameObject;
-            timeToInsert = 5f;
+            return;
+        }
+        //Insertion d'un Minion chaque 5 secondes à la position "pointDepart"
+        timer -= Time.deltaTime;
+
+        if(timer <= 0)
+        {
+            EnemyClone = Instantiate(Enemy, pointDepart.transform.position, Quaternion.identity);
+            NetworkServer.Spawn(EnemyClone);
+
+            timer = spawnFrequency;
         }
     }
 }
