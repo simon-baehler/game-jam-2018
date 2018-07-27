@@ -7,6 +7,11 @@ public class GameManager : MonoBehaviour {
     public Transform canvas;
     //public Player player;
 
+    void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     // Update is called once per frame
     void Update () {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -25,4 +30,6 @@ public class GameManager : MonoBehaviour {
             }
         }
 	}
+
+
 }
