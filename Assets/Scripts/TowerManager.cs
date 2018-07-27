@@ -46,7 +46,7 @@ public class TowerManager : NetworkBehaviour
     }
 
     [Command]
-    void Fire(Vector2 targetPosition)
+    void CmdFire(Vector2 targetPosition)
     {
         // Create the Bullet from the Bullet Prefab
         var bullet = (GameObject)Instantiate(
@@ -85,7 +85,7 @@ public class TowerManager : NetworkBehaviour
                 {
                     canShoot = false;
                     timeLeftBeforeShooting = 5.0f;   
-                    this.Fire(targetPosition);
+                    this.CmdFire(targetPosition);
                 }
             }
         }
@@ -106,7 +106,7 @@ public class TowerManager : NetworkBehaviour
                 {
                     canShoot = false;
                     timeLeftBeforeShooting = 5.0f;
-                    this.Fire(targetPosition);
+                    this.CmdFire(targetPosition);
                 }
             }
         }
@@ -118,7 +118,7 @@ public class TowerManager : NetworkBehaviour
             {
                 canShoot = false;
                 timeLeftBeforeShooting = 5.0f;
-                this.Fire(targetPosition);
+                this.CmdFire(targetPosition);
             }
         }
     }
