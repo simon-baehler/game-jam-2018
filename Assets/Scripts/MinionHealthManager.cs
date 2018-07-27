@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class MinionHealthManager : MonoBehaviour {
+public class MinionHealthManager : NetworkBehaviour {
 
     public const float maxHealth = 100f;
-    public float currentHealth = maxHealth;
     public RectTransform healthBar;
 
+    [SyncVar]
+    public float currentHealth = maxHealth;
 
     public void Start()
     {

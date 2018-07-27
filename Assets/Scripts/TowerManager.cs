@@ -71,20 +71,16 @@ public class TowerManager : NetworkBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("loloo");
         if (!haveAFocus) {
             //TODO : remplacer name par tag
             if (col.gameObject.tag == "minion")
             {
-
-                Debug.Log("minion");
                 Vector2 targetPosition = col.gameObject.transform.position;
                 currentTarget = col.gameObject.GetInstanceID();
                 haveAFocus = true;
                 targetGameObject = col.gameObject;
                 if (canShoot)
                 {
-                    Debug.Log("shoot");
                     canShoot = false;
                     timeLeftBeforeShooting = 5.0f;   
                     this.Fire(targetPosition);
