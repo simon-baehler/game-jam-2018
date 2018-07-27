@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class HealtManagerNexus : MonoBehaviour {
+public class HealtManagerNexus : NetworkBehaviour {
 
     public const float maxHealth = 400f;
-    public float currentHealth = maxHealth;
+    
     public RectTransform healthBar;
+
+    [SyncVar]
+    public float currentHealth = maxHealth;
 
     private AudioSource TowerAudio;
 
@@ -21,7 +25,9 @@ public class HealtManagerNexus : MonoBehaviour {
     }
 
     public void TakeDamage(float amount)
-    {        
+    {
+
+        Debug.Log("Nexus took damage");
         
         currentHealth -= amount;
         if (currentHealth <= 0)
@@ -29,7 +35,6 @@ public class HealtManagerNexus : MonoBehaviour {
             currentHealth = 0;
             Death();
         }
-
 
         healthBar.sizeDelta = new Vector2(currentHealth, healthBar.sizeDelta.y);
     }

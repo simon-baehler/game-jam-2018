@@ -12,7 +12,7 @@ public class NetworkGameManager : NetworkBehaviour {
     public GameObject Nexus;
 
     public Sprite BlueNexus;
-    public Sprite 
+    public Sprite RedNexus;
 
     private Transform RedTowerSpawn;
     private Transform BlueTowerSpawn;
@@ -22,17 +22,30 @@ public class NetworkGameManager : NetworkBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+
+        // ------------- Red Team -------------
         RedTowerSpawn = GameObject.FindGameObjectWithTag("RedTowerSpawnPoint").transform;
         GameObject redTower = Instantiate(Tower, RedTowerSpawn);
         redTower.layer = LayerMask.NameToLayer(RED_TOWER_LAYER);
 
+        RedNexusSpawn = GameObject.FindGameObjectWithTag("RedNexusSpawnPoint").transform;
+        GameObject redNexus = Instantiate(Nexus, RedNexusSpawn);
+        redNexus.layer = LayerMask.NameToLayer(RED_TOWER_LAYER);
+
+        // ------------- Blue Team -------------
         BlueTowerSpawn = GameObject.FindGameObjectWithTag("BlueTowerSpawnPoint").transform;
         GameObject blueTower = Instantiate(Tower, BlueTowerSpawn);
         blueTower.layer = LayerMask.NameToLayer(BLUE_TOWER_LAYER);
 
-        Debug.Log(redTower.transform.position);
+        BlueNexusSpawn = GameObject.FindGameObjectWithTag("BlueNexusSpawnPoint").transform;
+        GameObject blueNexus = Instantiate(Nexus, BlueNexusSpawn);
+        blueNexus.layer = LayerMask.NameToLayer(BLUE_TOWER_LAYER);
+
+        // Spawn EVERYTHING
         NetworkServer.Spawn(redTower);
         NetworkServer.Spawn(blueTower);
+        NetworkServer.Spawn(redNexus);
+        NetworkServer.Spawn(blueNexus);
     }
 	
 	// Update is called once per frame
