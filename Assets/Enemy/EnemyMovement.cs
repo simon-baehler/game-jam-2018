@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class EnemyMovement : MonoBehaviour {
+public class EnemyMovement : NetworkBehaviour {
 
     [SerializeField] float moveSpeed = 1f;
 
