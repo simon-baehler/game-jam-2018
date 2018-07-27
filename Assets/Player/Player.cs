@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using Cinemachine;
+using UnityEngine;
+using UnityEngine.Networking;
 
-public class Player : MonoBehaviour {
+public class Player : NetworkBehaviour {
 
     // Config
     [SerializeField] float damage = 5f;
@@ -12,17 +14,22 @@ public class Player : MonoBehaviour {
     // State
     float life = 100f;
     bool isAlive = true;
-    bool isBlocking = false;    
+    bool isBlocking = false;
 
     // Cached component references
+    CinemachineVirtualCamera myCamera;
+    SpriteRenderer mySpriteRenderer;
     CapsuleCollider2D m_BodyCollider;
     Rigidbody2D myRigidBody;
     Collider2D myCollider;
     Animator myAnimator;
     float gravityScaleAtStart;
 
+    // Spawn points
+    private NetworkStartPosition[] spawnPoints;
+
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         myRigidBody = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<Collider2D>();
         myAnimator = GetComponent<Animator>();
@@ -30,9 +37,32 @@ public class Player : MonoBehaviour {
 
         gravityScaleAtStart = myRigidBody.gravityScale;
     }
+
+    void Start()
+    {
+        if (isLocalPlayer)
+        {
+            spawnPoints = FindObjectsOfType<NetworkStartPosition>();
+            Vector3 spawnPoint = Vector3.zero;
+
+            if (spawnPoints != null && spawnPoints.Length > 0)
+            {
+                spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
+            }
+
+            transform.position = spawnPoint;
+
+            /*RpcRespawn();*/
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
+        if(!isLocalPlayer)
+        {
+            return;
+        }
+
         if(!isAlive)
         {
             return;
@@ -121,5 +151,37 @@ public class Player : MonoBehaviour {
     private void Death()
     {
         Death();
+    }
+
+    // --------------- Network -------------------
+    public override void OnStartLocalPlayer()
+    {
+        PolygonCollider2D background = GameObject.FindWithTag("Background").GetComponent<PolygonCollider2D>();
+        // base.OnStartLocalPlayer();
+        mySpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        mySpriteRenderer.color = new Color(0.5f, 0.7f, 1f, 1f);
+
+        myCamera = GetComponentInChildren<CinemachineVirtualCamera>();
+        CinemachineConfiner cameraConfiner = GetComponentInChildren<CinemachineConfiner>();
+
+        myCamera.enabled = true;
+        myCamera.Follow = transform;
+        cameraConfiner.m_BoundingShape2D = background;
+    }
+
+    [ClientRpc]
+    void RpcRespawn()
+    {
+        if (isLocalPlayer)
+        {
+            Vector3 spawnPoint = Vector3.zero;
+
+            if(spawnPoints != null && spawnPoints.Length > 0)
+            {
+                spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
+            }
+
+            transform.position = spawnPoint;
+        }
     }
 }
